@@ -510,14 +510,14 @@
     </inertial>
   </link>
 
-  <!-- Joint 14: End Effector -->
+  <!-- Joint 15: End Effector -->
   <joint name="end_effector_joint" type="fixed">
     <origin xyz="${0.0935+0.0375/2} 0.0 0.0" rpy="0 0 0"/>
     <parent link="omx1_wrist_link"/>
     <child link="omx1_end_effector_link"/>
   </joint>
 
-  <!-- Link 14: End Effector -->
+  <!-- Link 15: End Effector -->
   <link name="omx1_end_effector_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
