@@ -19,29 +19,53 @@
   <!-- World -->
   <gazebo reference="world"/>
 
-  <!-- Link1 -->
-  <RefLink ref="link1"/>
+  <!-- Link 0: Platform -->
+  <RefLink ref="omx1_platform_link"/>
 
-  <!-- Link2 -->
-  <RefLink ref="link2"/>
+  <!-- Link 1: Base -->
+  <RefLink ref="omx1_base_link"/>
 
-  <!-- Link3 -->
-  <RefLink ref="link3"/>
+  <!-- Link 2: Shoulder -->
+  <RefLink ref="omx1_shoulder_link"/>
 
-  <!-- Link4 -->
-  <RefLink ref="link4"/>
+  <!-- Link 3: Upper Arm -->
+  <RefLink ref="omx1_upper_link"/>
 
-  <!-- Link5 -->
-  <RefLink ref="link5"/>
+  <!-- Link 4: Lower Arm -->
+  <RefLink ref="omx1_lower_link"/>
 
-  <!-- gripper_link -->
-  <RefLink ref="gripper_link"/>
+  <!-- Link 5: Forearm Upper -->
+  <RefLink ref="omx1_forearm_roll_link"/>
 
-  <!-- gripper_link_sub -->
-  <RefLink ref="gripper_link_sub"/>
+  <!-- Link 6: Forearm Lower -->
+  <RefLink ref="omx1_forearm_tilt_link"/>
 
-  <!-- end effector link -->
-  <gazebo reference="end_effector_link">
+  <!-- Link 7: Wrist (Gripper Base) -->
+  <RefLink ref="omx1_wrist_link"/>
+
+  <!-- Link 8: Gripper -->
+  <RefLink ref="omx1_gripper_link"/>
+
+  <!-- Link 9: Gripper left sub -->
+  <RefLink ref="omx1_gripper_l_sub_link"/>
+
+  <!-- Link 10: Gripper right sub -->
+  <RefLink ref="omx1_gripper_r_sub_link"/>
+
+  <!-- Link 11: Gripper Finger Left -->
+  <RefLink ref="omx1_gripper_l_finger_link"/>
+
+  <!-- Link 12: Gripper Finger Right -->
+  <RefLink ref="omx1_gripper_r_finger_link"/>
+
+  <!-- Link 13: Gripper Tip Left -->
+  <RefLink ref="omx1_gripper_l_tip_link"/>
+
+  <!-- Link 14: Gripper Tip Right -->
+  <RefLink ref="omx1_gripper_r_tip_link"/>
+
+  <!-- Link 15: End Effector -->
+  <gazebo reference="omx1_end_effector_link">
     <material>Gazebo/Red</material>
   </gazebo>
 

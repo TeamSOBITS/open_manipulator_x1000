@@ -4,47 +4,54 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- Transmission macro -->
-  <xacro:macro name="SimpleTransmissionPosition" params="joint n">
-    <transmission name="tran${n}">
+  <xacro:macro name="SimpleTransmissionPosition" params="name">
+    <transmission name="${name}_tran">
       <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${joint}">
+      <joint name="${name}_joint">
         <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
       </joint>
-      <actuator name="motor${n}">
+      <actuator name="${name}_act">
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
     </transmission>
   </xacro:macro>
 
   <!-- Transmission macro -->
-  <xacro:macro name="SimpleTransmissionEffort" params="joint n">
-    <transmission name="tran${n}">
+  <xacro:macro name="SimpleTransmissionEffort" params="name">
+    <transmission name="${name}_tran">
       <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${joint}">
+      <joint name="${name}_joint">
         <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
-      <actuator name="motor${n}">
+      <actuator name="${name}_act">
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
     </transmission>
   </xacro:macro>
 
-  <!-- Transmission 1 -->
-  <xacro:SimpleTransmissionPosition n="1" joint="joint1" />
 
-  <!-- Transmission 2 -->
-  <xacro:SimpleTransmissionPosition n="2" joint="joint2" />
+  <!-- Transmission 1: Shoulder -->
+  <xacro:SimpleTransmissionPosition name="omx1_shoulder_link" />
 
-  <!-- Transmission 3 -->
-  <xacro:SimpleTransmissionPosition n="3" joint="joint3" />
+  <!-- Transmission 2: Upper Arm -->
+  <xacro:SimpleTransmissionPosition name="omx1_upper_link" />
 
-  <!-- Transmission 4 -->
-  <xacro:SimpleTransmissionPosition n="4" joint="joint4" />
+  <!-- Transmission 3: Lower Arm -->
+  <xacro:SimpleTransmissionPosition name="omx1_lower_link" />
 
-  <!-- Transmission 5 -->
-  <xacro:SimpleTransmissionEffort n="5" joint="gripper" />
+  <!-- Transmission 4: Forearm Upper -->
+  <xacro:SimpleTransmissionPosition name="omx1_forearm_roll_link" />
 
-  <!-- Transmission 6 -->
-  <xacro:SimpleTransmissionEffort n="6" joint="gripper_sub" />
+  <!-- Transmission 5: Forearm Lower -->
+  <xacro:SimpleTransmissionPosition name="omx1_forearm_tilt_link" />
+
+  <!-- Transmission 6: Wrist (Gripper Base) -->
+  <xacro:SimpleTransmissionPosition name="omx1_wrist_link" />
+
+  <!-- Transmission 7: Gripper Finger Left -->
+  <xacro:SimpleTransmissionEffort name="omx1_gripper_l_finger_link" />
+
+  <!-- Transmission 8: Gripper Finger Right -->
+  <xacro:SimpleTransmissionEffort name="omx1_gripper_r_finger_link" />
 
 </robot>
