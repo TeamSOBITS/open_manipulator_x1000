@@ -10,9 +10,9 @@
   <xacro:include filename="$(find open_manipulator_x_description)/urdf/common.xacro" />
 
   <!-- Import all Gazebo-customization elements, including Gazebo colors -->
-  <!-- <xacro:if value="$(arg gazebo)">
+  <!-- <xacro:if value="$(arg gazebo)"> -->
     <xacro:include filename="$(find open_manipulator_x_description)/urdf/open_manipulator_x.gazebo.xacro" />
-  </xacro:if> -->
+  <!-- </xacro:if> -->
 
   <!-- Import Transmission -->
   <xacro:include filename="$(find open_manipulator_x_description)/urdf/open_manipulator_x.transmission.xacro" />
