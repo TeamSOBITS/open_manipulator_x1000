@@ -65,16 +65,16 @@
   </link>
 
   <!-- Joint 2: Shoulder -->
-  <joint name="omx1_shoulder_joint" type="revolute">
+  <joint name="omx1_arm1_joint" type="revolute">
     <parent link="omx1_base_link"/>
-    <child link="omx1_shoulder_link"/>
+    <child link="omx1_arm1_link"/>
     <origin xyz="0.0 0.0 0.0465" rpy="0 0 0"/>
     <axis xyz="0 0 1"/>
     <limit velocity="4.8" effort="1" lower="${-M_PI}" upper="${M_PI}" />
   </joint>
 
   <!--  Link 2: Shoulder -->
-  <link name="omx1_shoulder_link">
+  <link name="omx1_arm1_link">
     <visual>
       <origin xyz="0 0 0.0" rpy="0 0 ${M_PI/2}"/>
       <geometry>
@@ -100,16 +100,16 @@
   </link>
 
   <!--  Joint 3: Upper Arm -->
-  <joint name="omx1_upper_joint" type="revolute">
-    <parent link="omx1_shoulder_link"/>
-    <child link="omx1_upper_link"/>
+  <joint name="omx1_arm2_joint" type="revolute">
+    <parent link="omx1_arm1_link"/>
+    <child link="omx1_arm2_link"/>
     <origin xyz="0.0 0.0 0.05095" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <limit velocity="4.8" effort="1" lower="${-M_PI/2}" upper="${M_PI/2}" />
   </joint>
 
   <!--  Link 3: Upper Arm -->
-  <link name="omx1_upper_link">
+  <link name="omx1_arm2_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}"/>
       <geometry>
@@ -135,16 +135,16 @@
   </link>
 
   <!--  Joint 4: Lower Arm -->
-  <joint name="omx1_lower_joint" type="revolute">
-    <parent link="omx1_upper_link"/>
-    <child link="omx1_lower_link"/>
+  <joint name="omx1_arm3_joint" type="revolute">
+    <parent link="omx1_arm2_link"/>
+    <child link="omx1_arm3_link"/>
     <origin xyz="0.022 -0.0 0.128" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <limit velocity="4.8" effort="1" lower="${-M_PI/2}" upper="${M_PI/2}" />
   </joint>
 
   <!--  Link 4: Lower Arm -->
-  <link name="omx1_lower_link">
+  <link name="omx1_arm3_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}"/>
       <geometry>
@@ -170,16 +170,16 @@
   </link>
 
   <!--  Joint 5: Forearm Upper -->
-  <joint name="omx1_forearm_upper_joint" type="revolute">
-    <parent link="omx1_lower_link"/>
-    <child link="omx1_forearm_roll_link"/>
+  <joint name="omx1_arm4_joint" type="revolute">
+    <parent link="omx1_arm3_link"/>
+    <child link="omx1_arm4_link"/>
     <origin xyz="0.0835 0.0 0.0" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
     <limit velocity="4.8" effort="1" lower="${-M_PI}" upper="${M_PI}" />
   </joint>
 
   <!--  Link 5: Forearm Upper -->
-  <link name="omx1_forearm_roll_link">
+  <link name="omx1_arm4_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}"/>
       <geometry>
@@ -205,16 +205,16 @@
   </link>
 
   <!--  Joint 6: Forearm Lower -->
-  <joint name="omx1_forearm_lower_link" type="revolute">
-    <parent link="omx1_forearm_roll_link"/>
-    <child link="omx1_forearm_tilt_link"/>
+  <joint name="omx1_arm5_joint" type="revolute">
+    <parent link="omx1_arm4_link"/>
+    <child link="omx1_arm5_link"/>
     <origin xyz="0.0405 0.0 0.0" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <limit velocity="4.8" effort="1" lower="${-M_PI/2}" upper="${M_PI/2}" />
   </joint>
 
   <!--  Link 6: Forearm Lower -->
-  <link name="omx1_forearm_tilt_link">
+  <link name="omx1_arm5_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}"/>
       <geometry>
@@ -240,16 +240,16 @@
   </link>
 
   <!--  Joint 7: Wrist (Gripper Base) -->
-  <joint name="omx1_wrist_joint" type="revolute">
-    <parent link="omx1_forearm_tilt_link"/>
-    <child link="omx1_wrist_link"/>
+  <joint name="omx1_arm6_joint" type="revolute">
+    <parent link="omx1_arm5_link"/>
+    <child link="omx1_arm6_link"/>
     <origin xyz="0.064 0 0.0" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
     <limit velocity="4.8" effort="1" lower="${-M_PI}" upper="${M_PI}" />
   </joint>
 
   <!--  Link 7: Wrist (Gripper Base) -->
-  <link name="omx1_wrist_link">
+  <link name="omx1_arm6_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}"/>
       <geometry>
@@ -276,7 +276,7 @@
 
   <!--  Joint 8: Gripper -->
   <joint name="omx1_gripper_joint" type="fixed">
-    <parent link="omx1_wrist_link"/>
+    <parent link="omx1_arm6_link"/>
     <child link="omx1_gripper_link"/>
     <origin xyz="0.05 0.0 0.0" rpy="0 0 0"/>
   </joint>
@@ -513,7 +513,7 @@
   <!-- Joint 15: End Effector -->
   <joint name="end_effector_joint" type="fixed">
     <origin xyz="${0.0935+0.0375/2} 0.0 0.0" rpy="0 0 0"/>
-    <parent link="omx1_wrist_link"/>
+    <parent link="omx1_arm6_link"/>
     <child link="omx1_end_effector_link"/>
   </joint>
 

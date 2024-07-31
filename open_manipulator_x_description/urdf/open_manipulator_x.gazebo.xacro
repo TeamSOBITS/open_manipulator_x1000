@@ -26,22 +26,22 @@
   <RefLink ref="omx1_base_link"/>
 
   <!-- Link 2: Shoulder -->
-  <RefLink ref="omx1_shoulder_link"/>
+  <RefLink ref="omx1_arm1_link"/>
 
   <!-- Link 3: Upper Arm -->
-  <RefLink ref="omx1_upper_link"/>
+  <RefLink ref="omx1_arm2_link"/>
 
   <!-- Link 4: Lower Arm -->
-  <RefLink ref="omx1_lower_link"/>
+  <RefLink ref="omx1_arm3_link"/>
 
   <!-- Link 5: Forearm Upper -->
-  <RefLink ref="omx1_forearm_roll_link"/>
+  <RefLink ref="omx1_arm4_link"/>
 
   <!-- Link 6: Forearm Lower -->
-  <RefLink ref="omx1_forearm_tilt_link"/>
+  <RefLink ref="omx1_arm5_link"/>
 
   <!-- Link 7: Wrist (Gripper Base) -->
-  <RefLink ref="omx1_wrist_link"/>
+  <RefLink ref="omx1_arm6_link"/>
 
   <!-- Link 8: Gripper -->
   <RefLink ref="omx1_gripper_link"/>
