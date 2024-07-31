@@ -6,11 +6,10 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /RobotModel1
         - /TF1
-        - /TF1/Tree1
-      Splitter Ratio: 0.47510668635368347
-    Tree Height: 552
+        - /TF1/Frames1
+      Splitter Ratio: 0.6852940917015076
+    Tree Height: 826
   - Class: rviz_common/Selection
     Name: Selection
   - Class: rviz_common/Tool Properties
@@ -63,50 +62,93 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        camera_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        end_effector_link:
+        omx1_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        gripper_link:
+        omx1_end_effector_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        gripper_link_sub:
+        omx1_forearm_roll_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link1:
+        omx1_forearm_tilt_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link2:
+        omx1_gripper_l_finger_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link3:
+        omx1_gripper_l_sub_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link4:
+        omx1_gripper_l_tip_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        link5:
+        omx1_gripper_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
+        omx1_gripper_r_finger_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        omx1_gripper_r_sub_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        omx1_gripper_r_tip_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        omx1_lower_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        omx1_platform_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        omx1_shoulder_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        omx1_upper_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        omx1_wrist_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        world:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+      Mass Properties:
+        Inertia: false
+        Mass: false
       Name: RobotModel
       TF Prefix: ""
       Update Interval: 0
@@ -117,49 +159,72 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        camera_link:
+        omx1_base_link:
           Value: true
-        end_effector_link:
+        omx1_end_effector_link:
           Value: true
-        gripper_link:
+        omx1_forearm_roll_link:
           Value: true
-        gripper_link_sub:
+        omx1_forearm_tilt_link:
           Value: true
-        link1:
+        omx1_gripper_l_finger_link:
           Value: true
-        link2:
+        omx1_gripper_l_sub_link:
           Value: true
-        link3:
+        omx1_gripper_l_tip_link:
           Value: true
-        link4:
+        omx1_gripper_link:
           Value: true
-        link5:
+        omx1_gripper_r_finger_link:
           Value: true
-      Marker Scale: 0.30000001192092896
+        omx1_gripper_r_sub_link:
+          Value: true
+        omx1_gripper_r_tip_link:
+          Value: true
+        omx1_lower_link:
+          Value: true
+        omx1_platform_link:
+          Value: true
+        omx1_shoulder_link:
+          Value: true
+        omx1_upper_link:
+          Value: true
+        omx1_wrist_link:
+          Value: true
+        world:
+          Value: true
+      Marker Scale: 0.15000000596046448
       Name: TF
       Show Arrows: false
       Show Axes: true
       Show Names: true
       Tree:
-        link1:
-          link2:
-            link3:
-              link4:
-                link5:
-                  camera_link:
-                    {}
-                  end_effector_link:
-                    {}
-                  gripper_link:
-                    {}
-                  gripper_link_sub:
-                    {}
+        world:
+          omx1_platform_link:
+            omx1_base_link:
+              omx1_shoulder_link:
+                omx1_upper_link:
+                  omx1_lower_link:
+                    omx1_forearm_roll_link:
+                      omx1_forearm_tilt_link:
+                        omx1_wrist_link:
+                          omx1_end_effector_link:
+                            {}
+                          omx1_gripper_link:
+                            omx1_gripper_l_sub_link:
+                              omx1_gripper_l_finger_link:
+                                omx1_gripper_l_tip_link:
+                                  {}
+                            omx1_gripper_r_sub_link:
+                              omx1_gripper_r_finger_link:
+                                omx1_gripper_r_tip_link:
+                                  {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 225; 225; 225
-    Fixed Frame: link1
+    Fixed Frame: world
     Frame Rate: 30
   Name: root
   Tools:
@@ -169,6 +234,9 @@ Visualization Manager:
     - Class: rviz_default_plugins/Measure
       Line color: 128; 128; 0
     - Class: rviz_default_plugins/SetInitialPose
+      Covariance x: 0.25
+      Covariance y: 0.25
+      Covariance yaw: 0.06853891909122467
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -197,39 +265,39 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 1.2183302640914917
+      Distance: 0.5245006084442139
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.026659635826945305
-        Y: 0.10458234697580338
-        Z: 0.06186971813440323
+        X: 0.09590770304203033
+        Y: 0.017081139609217644
+        Z: 0.15099725127220154
       Focal Shape Fixed Size: true
-      Focal Shape Size: 0.05000000074505806
+      Focal Shape Size: 0.0010000000474974513
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.31539803743362427
+      Pitch: 0.804999589920044
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.508579254150391
+      Yaw: 0.37000030279159546
     Saved: ~
 Window Geometry:
   Displays:
-    collapsed: true
-  Height: 781
-  Hide Left Dock: true
+    collapsed: false
+  Height: 1043
+  Hide Left Dock: false
   Hide Right Dock: true
-  QMainWindow State: 000000ff00000000fd0000000400000000000002c1000002b3fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073000000003d000002b3000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f000002b3fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d000002b3000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004420000003efc0100000002fb0000000800540069006d00650100000000000004420000000000000000fb0000000800540069006d00650100000000000004500000000000000000000002da000002b300000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd000000040000000000000156000003c1fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000039000003c1000000c500fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f000003c1fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730000000039000003c10000009d00fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004420000003efc0100000002fb0000000800540069006d00650100000000000004420000000000000000fb0000000800540069006d0065010000000000000450000000000000000000000624000003c100000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Tool Properties:
     collapsed: false
   Views:
     collapsed: true
-  Width: 730
-  X: 1401
-  Y: 120
+  Width: 1920
+  X: 1920
+  Y: 0
