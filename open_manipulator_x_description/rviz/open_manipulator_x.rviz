@@ -72,12 +72,12 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        omx1_forearm_roll_link:
+        omx1_arm4_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        omx1_forearm_tilt_link:
+        omx1_arm5_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -117,7 +117,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        omx1_lower_link:
+        omx1_arm3_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -127,17 +127,17 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        omx1_shoulder_link:
+        omx1_arm1_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        omx1_upper_link:
+        omx1_arm2_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        omx1_wrist_link:
+        omx1_arm6_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -163,9 +163,9 @@ Visualization Manager:
           Value: true
         omx1_end_effector_link:
           Value: true
-        omx1_forearm_roll_link:
+        omx1_arm4_link:
           Value: true
-        omx1_forearm_tilt_link:
+        omx1_arm5_link:
           Value: true
         omx1_gripper_l_finger_link:
           Value: true
@@ -181,15 +181,15 @@ Visualization Manager:
           Value: true
         omx1_gripper_r_tip_link:
           Value: true
-        omx1_lower_link:
+        omx1_arm3_link:
           Value: true
         omx1_platform_link:
           Value: true
-        omx1_shoulder_link:
+        omx1_arm1_link:
           Value: true
-        omx1_upper_link:
+        omx1_arm2_link:
           Value: true
-        omx1_wrist_link:
+        omx1_arm6_link:
           Value: true
         world:
           Value: true
@@ -202,12 +202,12 @@ Visualization Manager:
         world:
           omx1_platform_link:
             omx1_base_link:
-              omx1_shoulder_link:
-                omx1_upper_link:
-                  omx1_lower_link:
-                    omx1_forearm_roll_link:
-                      omx1_forearm_tilt_link:
-                        omx1_wrist_link:
+              omx1_arm1_link:
+                omx1_arm2_link:
+                  omx1_arm3_link:
+                    omx1_arm4_link:
+                      omx1_arm5_link:
+                        omx1_arm6_link:
                           omx1_end_effector_link:
                             {}
                           omx1_gripper_link:
