@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro">
+<!-- OpenManipulator X1000 (Gazebo) -->
+<robot name="open_manipulator_x1000"
+       xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- Gazebo Reference macro -->
   <xacro:macro name="RefLink" params="ref">

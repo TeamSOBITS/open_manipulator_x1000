@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<robot>
+<!-- OpenManipulator X1000 (Materials) -->
+<robot name="open_manipulator_x1000"
+       xmlns:xacro="http://ros.org/wiki/xacro">
 
   <material name="black">
     <color rgba="0.0 0.0 0.0 1.0"/>
