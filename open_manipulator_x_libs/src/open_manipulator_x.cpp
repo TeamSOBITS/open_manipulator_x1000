@@ -33,89 +33,128 @@ void OpenManipulatorX::init_open_manipulator_x(bool sim, STRING usb_port, STRING
     ** Initialize Manipulator Parameter
     *****************************************************************************/
     addWorld("world",   // world name
-             "joint1"); // child name
+             "omx1_arm1_joint"); // child name
 
-    addJoint("joint1",  // my name
+    addJoint("omx1_arm1_joint",  // my name
              "world",   // parent name
-             "joint2",  // child name
-             math::vector3(0.012, 0.0, 0.017),                // relative position
+             "omx1_arm2_joint",  // child name
+             math::vector3(-0.0295, 0.0, 0.0525),             // relative position
              math::convertRPYToRotationMatrix(0.0, 0.0, 0.0), // relative orientation
              Z_AXIS,    // axis of rotation
              dxl_id[0], // actuator id
              M_PI,      // max joint limit (3.14 rad)
              -M_PI,     // min joint limit (-3.14 rad)
              1.0,       // coefficient
-             1.0483260e-01,                                                        // mass
-             math::inertiaMatrix(1.0781918e-04, 0.0,           0.0,
-                                                1.0355255e-04, -1.8062416e-06,
-                                                               1.7644210e-05),     // inertial tensor
-             math::vector3(0.0, 5.6914372e-04, 0.018 + 2.6565513e-02)              // COM
+             0.1        // TODO: mass
+            //  math::inertiaMatrix(1.0, 0.0, 0.0,
+            //                           1.0, 1.0,
+            //                                1.0),  // TODO: inertial tensor
+            //  math::vector3(0.0, 0.0, 0.0)         // TODO: COM
              );
 
-    addJoint("joint2",  // my name
-             "joint1",  // parent name
-             "joint3",  // child name
-             math::vector3(0.0, 0.0, 0.0595),                // relative position
+    addJoint("omx1_arm2_joint",  // my name
+             "omx1_arm1_joint",  // parent name
+             "omx1_arm3_joint",  // child name
+             math::vector3(0.0, 0.0, 0.05095),                // relative position
              math::convertRPYToRotationMatrix(0.0, 0.0, 0.0), // relative orientation
              Y_AXIS,    // axis of rotation
              dxl_id[1], // actuator id
              M_PI_2,    // max joint limit (1.67 rad)
-             -2.05,     // min joint limit (-2.05 rad)
-             1.0,       // coefficient
-             1.4234630e-01,                                                        // mass
-             math::inertiaMatrix(1.8365231e-03, -8.2177190e-07, -1.6490470e-04,
-                                                1.8562153e-03, -7.6370887e-06,
-                                                                5.4940213e-05),    // inertial tensor
-             math::vector3(9.1617228e-03, 4.1915210e-04, 1.0599936e-01)            // COM
-             );
-
-    addJoint("joint3",  // my name
-             "joint2",  // parent name
-             "joint4",  // child name
-             math::vector3(0.024, 0.0, 0.128),               // relative position
-             math::convertRPYToRotationMatrix(0.0, 0.0, 0.0), // relative orientation
-             Y_AXIS,    // axis of rotation
-             dxl_id[2], // actuator id
-             1.53,      // max joint limit (1.53 rad)
              -M_PI_2,   // min joint limit (-1.67 rad)
              1.0,       // coefficient
-             1.3467049e-01,                                                        // mass
-             math::inertiaMatrix(2.4835638e-05, -6.7882502e-06, -2.7331036e-09,
-                                                1.3502276e-03, 0.0,
-                                                               1.3589608e-03),     // inertial tensor
-             math::vector3(9.3290225e-02, 4.4304274e-04, 3.6312773e-07)            // COM
+             0.1        // TODO: mass
+            //  math::inertiaMatrix(1.0, 0.0, 0.0,
+            //                           1.0, 1.0,
+            //                                1.0),  // TODO: inertial tensor
+            //  math::vector3(0.0, 0.0, 0.0)         // TODO: COM
              );
 
-    addJoint("joint4",  // my name
-             "joint3",  // parent name
-             "gripper", // child name
-             math::vector3(0.124, 0.0, 0.0),                 // relative position
+    addJoint("omx1_arm3_joint",  // my name
+             "omx1_arm2_joint",  // parent name
+             "omx1_arm4_joint",  // child name
+             math::vector3(0.022, 0.0, 0.128),                // relative position
              math::convertRPYToRotationMatrix(0.0, 0.0, 0.0), // relative orientation
              Y_AXIS,    // axis of rotation
-             dxl_id[3], // actuator id
-             2.0,       // max joint limit (2.0 rad)
-             -1.8,      // min joint limit (-1.8 rad)
+            //  dxl_id[3], // actuator id
+             dxl_id[2], // actuator id
+             M_PI_2,    // max joint limit (1.67 rad)
+             -M_PI_2,   // min joint limit (-1.67 rad)
              1.0,       // coefficient
-             1.6512361e-01,                                                        // mass
-             math::inertiaMatrix(9.9192159e-05, 7.1970402e-09, -6.4649200e-05,
-                                                4.7615217e-04, -2.2085254e-07,
-                                                                4.7876798e-04),    // inertial tensor
-             math::vector3(4.4206755e-02, 3.6839985e-07, 8.9142216e-03)            // COM
+             0.1        // TODO: mass
+            //  math::inertiaMatrix(1.0, 0.0, 0.0,
+            //                           1.0, 1.0,
+            //                                1.0),  // TODO: inertial tensor
+            //  math::vector3(0.0, 0.0, 0.0)         // TODO: COM
              );
 
-    addTool("gripper",  // my name
-            "joint4",   // parent name
-            math::vector3(0.126, 0.0, 0.0),                 // relative position
+    addJoint("omx1_arm4_joint",  // my name
+             "omx1_arm3_joint",  // parent name
+             "omx1_arm5_joint", // child name
+             math::vector3(0.0835, 0.0, 0.0),                 // relative position
+             math::convertRPYToRotationMatrix(0.0, 0.0, 0.0), // relative orientation
+             Y_AXIS,    // axis of rotation
+            //  dxl_id[4], // actuator id
+             dxl_id[3], // actuator id
+             M_PI,      // max joint limit (3.14 rad)
+             -M_PI,     // min joint limit (-3.14 rad)
+             1.0,       // coefficient
+             0.1        // TODO: mass
+            //  math::inertiaMatrix(1.0, 0.0, 0.0,
+            //                           1.0, 1.0,
+            //                                1.0),  // TODO: inertial tensor
+            //  math::vector3(0.0, 0.0, 0.0)         // TODO: COM
+             );
+
+    addJoint("omx1_arm5_joint",  // my name
+             "omx1_arm4_joint",  // parent name
+             "omx1_arm6_joint", // child name
+             math::vector3(0.0405, 0.0, 0.0),                 // relative position
+             math::convertRPYToRotationMatrix(0.0, 0.0, 0.0), // relative orientation
+             Y_AXIS,    // axis of rotation
+            //  dxl_id[5], // actuator id
+             dxl_id[4], // actuator id
+             M_PI_2,    // max joint limit (1.67 rad)
+             -M_PI_2,   // min joint limit (-1.67 rad)
+             1.0,       // coefficient
+             0.1        // TODO: mass
+            //  math::inertiaMatrix(1.0, 0.0, 0.0,
+            //                           1.0, 1.0,
+            //                                1.0),  // TODO: inertial tensor
+            //  math::vector3(0.0, 0.0, 0.0)         // TODO: COM
+             );
+
+    addJoint("omx1_arm6_joint",  // my name
+             "omx1_arm5_joint",  // parent name
+             "omx1_gripper_l_finger_joint", // child name
+             math::vector3(0.064, 0.0, 0.0),                  // relative position
+             math::convertRPYToRotationMatrix(0.0, 0.0, 0.0), // relative orientation
+             Y_AXIS,    // axis of rotation
+            //  dxl_id[6], // actuator id
+             dxl_id[5], // actuator id
+             M_PI,      // max joint limit (3.14 rad)
+             -M_PI,     // min joint limit (-3.14 rad)
+             1.0,       // coefficient
+             0.1        // TODO: mass
+            //  math::inertiaMatrix(1.0, 0.0, 0.0,
+            //                           1.0, 1.0,
+            //                                1.0),  // TODO: inertial tensor
+            //  math::vector3(0.0, 0.0, 0.0)         // TODO: COM
+             );
+
+    addTool("omx1_gripper_l_finger_joint",  // my name
+            "omx1_arm6_joint",   // parent name
+            math::vector3(0.11225, 0.0, 0.0),                 // relative position
             math::convertRPYToRotationMatrix(0.0, 0.0, 0.0), // relative orientation
-            dxl_id[4],  // actuator id
-            0.010,      // max gripper limit (0.01 m)
-            -0.010,     // min gripper limit (-0.01 m)
+            // dxl_id[7],  // actuator id
+            dxl_id[6],  // actuator id
+            0.02825,    // max gripper limit (0.01 m)
+            -0.02825,   // min gripper limit (-0.01 m)
             -0.015,     // Change unit from `meter` to `radian`
-            3.6700241e-02 * 2,                                                    // mass
-            math::inertiaMatrix(1.3343511e-05, 6.5936965e-06, -1.2045858e-09,
-                                               3.1948952e-05, 1.8419228e-10,
-                                                              2.7456763e-05),     // inertial tensor
-            math::vector3(1.3928529e-02, -7.3239535e-03, 4.5486219e-07)          // COM
+            0.1         // TODO: mass
+            //  math::inertiaMatrix(1.0, 0.0, 0.0,
+            //                           1.0, 1.0,
+            //                                1.0),  // TODO: inertial tensor
+            //  math::vector3(0.0, 0.0, 0.0)         // TODO: COM
             );
           
   /*****************************************************************************
@@ -143,6 +182,9 @@ void OpenManipulatorX::init_open_manipulator_x(bool sim, STRING usb_port, STRING
     jointDxlId.push_back(dxl_id[1]);
     jointDxlId.push_back(dxl_id[2]);
     jointDxlId.push_back(dxl_id[3]);
+    jointDxlId.push_back(dxl_id[4]);
+    jointDxlId.push_back(dxl_id[5]);
+    // jointDxlId.push_back(dxl_id[6]);
     addJointActuator(JOINT_DYNAMIXEL, actuator_, jointDxlId, p_dxl_comm_arg);
 
     // Set joint actuator control mode
@@ -155,7 +197,8 @@ void OpenManipulatorX::init_open_manipulator_x(bool sim, STRING usb_port, STRING
     *****************************************************************************/
     tool_ = new dynamixel::GripperDynamixel();
 
-    uint8_t gripperDxlId = dxl_id[4];
+    // uint8_t gripperDxlId = dxl_id[7];
+    uint8_t gripperDxlId = dxl_id[6];
     addToolActuator(TOOL_DYNAMIXEL, tool_, gripperDxlId, p_dxl_comm_arg);
 
     // Set gripper actuator control mode
