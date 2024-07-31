@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!-- OpenManipulator X1000 (Materials) -->
+<robot name="open_manipulator_x1000"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:property name="M_PI" value="3.14159265359" />
+
+</robot>
