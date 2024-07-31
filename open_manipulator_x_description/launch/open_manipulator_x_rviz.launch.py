@@ -1,71 +1,64 @@
-#!/usr/bin/env python3
-#
-# Copyright 2019 ROBOTIS CO., LTD.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-# Author: Ryan Shim
-
 import os
 
 from ament_index_python.packages import get_package_share_directory
+
 from launch import LaunchDescription
-from launch.substitutions import LaunchConfiguration
+from launch.actions import DeclareLaunchArgument
+from launch.actions import IncludeLaunchDescription
+from launch.conditions import IfCondition, UnlessCondition
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+
 from launch_ros.actions import Node
+from launch_ros.substitutions import FindPackageShare
+
 
 def generate_launch_description():
     # Arguments
-    use_gui = LaunchConfiguration('use_gui', default='False')
+    use_gui = LaunchConfiguration('use_gui', default='True')
 
     robot_name = "open_manipulator_x"
     package_name = robot_name + "_description"
-    
-    rviz_config = os.path.join(
-        get_package_share_directory(package_name),
-        "rviz",
-        robot_name + ".rviz")
 
-    urdf_file = os.path.join(
-        get_package_share_directory(package_name),
-        'urdf',
-        robot_name + ".urdf.xacro")
+    urdf_launch_package = FindPackageShare('urdf_launch')
+    omx_description_package = FindPackageShare(package_name)
+    default_rviz_config_path = PathJoinSubstitution([omx_description_package, 'rviz', 'open_manipulator_x.rviz'])
 
-    print('urdf_file_name : {}'.format(urdf_file))
+    ld = LaunchDescription()
 
-    with open(urdf_file, 'r') as infp:
-        robot_desc = infp.read()
+    ld.add_action(DeclareLaunchArgument(name='jsp_gui', default_value='true', choices=['true', 'false'],
+                                        description='Flag to enable joint_state_publisher_gui'))
 
-    return LaunchDescription([
-        Node(
-            package='joint_state_publisher',
-            executable='joint_state_publisher',
-            name='joint_state_publisher',
-            arguments=[urdf_file],
-            parameters=[{'source_list': ['joint_states']}],
-            output='screen'),
+    ld.add_action(DeclareLaunchArgument(name='rviz_config', default_value=default_rviz_config_path,
+                                        description='Absolute path to rviz config file'))
 
-        Node(
-            package='robot_state_publisher',
-            executable='robot_state_publisher',
-            name='robot_state_publisher',
-            parameters=[
-                {"robot_description": robot_desc}],
-            output='screen'),
+    # need to manually pass configuration in because of https://github.com/ros2/launch/issues/313
+    ld.add_action(IncludeLaunchDescription(
+        PathJoinSubstitution([urdf_launch_package, 'launch', 'description.launch.py']),
+        launch_arguments={
+            'urdf_package': 'open_manipulator_x_description',
+            'urdf_package_path': PathJoinSubstitution(['urdf', 'open_manipulator_x_robot.urdf.xacro'])}.items()
+    ))
 
-        Node(
-            package='rviz2',
-            executable='rviz2',
-            name='rviz2',
-            arguments=['-d', rviz_config],
-            output='screen')
-    ])
+    # Depending on gui parameter, either launch joint_state_publisher or joint_state_publisher_gui
+    ld.add_action(Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        output='screen',
+        condition=UnlessCondition(use_gui)
+    ))
+
+    ld.add_action(Node(
+        package='joint_state_publisher_gui',
+        executable='joint_state_publisher_gui',
+        output='screen',
+        condition=IfCondition(use_gui)
+    ))
+
+    # Visualize robot in rviz    
+    ld.add_action(Node(
+        package='rviz2',
+        executable='rviz2',
+        output='screen',
+        arguments=['-d', LaunchConfiguration('rviz_config')],
+    ))
+    return ld
