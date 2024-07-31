@@ -41,8 +41,11 @@ OpenManipulatorXController::OpenManipulatorXController(std::string usb_port, std
   ** Initialise ROS publishers, subscribers and servers
   ************************************************************/
   init_publisher();
+  std::cout << "init_publisher" << std::endl;
   init_subscriber();
+  std::cout << "init_subscriber" << std::endl;
   init_server();
+  std::cout << "init_server" << std::endl;
 
   /************************************************************
   ** Initialise ROS timers
