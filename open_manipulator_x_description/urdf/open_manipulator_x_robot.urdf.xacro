@@ -4,27 +4,30 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- Import Rviz colors -->
-  <xacro:include filename="package://open_manipulator_x_description/urdf/materials.xacro" />
+  <xacro:include filename="$(find open_manipulator_x_description)/urdf/materials.xacro" />
+
+  <!-- Import Values -->
+  <xacro:include filename="$(find open_manipulator_x_description)/urdf/common.xacro" />
 
   <!-- Import all Gazebo-customization elements, including Gazebo colors -->
-  <xacro:if value="$(arg gazebo)">
-    <xacro:include filename="package://open_manipulator_x_description/urdf/open_manipulator_x.gazebo.xacro" />
-  </xacro:if>
+  <!-- <xacro:if value="$(arg gazebo)">
+    <xacro:include filename="$(find open_manipulator_x_description)/urdf/open_manipulator_x.gazebo.xacro" />
+  </xacro:if> -->
 
   <!-- Import Transmission -->
-  <xacro:include filename="package://open_manipulator_x_description/urdf/open_manipulator_x.transmission.xacro" />
+  <xacro:include filename="$(find open_manipulator_x_description)/urdf/open_manipulator_x.transmission.xacro" />
 
   <!-- Import URDF -->
-  <xacro:include filename="package://open_manipulator_x_description/urdf/open_manipulator_x.urdf.xacro" />
+  <xacro:include filename="$(find open_manipulator_x_description)/urdf/open_manipulator_x.urdf.xacro" />
 
   <!-- World -->
   <link name="world"/>
 
   <!-- World fixed joint-->
   <joint name="world_fixed" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="-0.019 0.0135 0" rpy="0 0 0"/>
     <parent link="world"/>
-    <child link="omx1_base_link"/>
+    <child link="omx1_platform_link"/>
   </joint>
 
 </robot>
