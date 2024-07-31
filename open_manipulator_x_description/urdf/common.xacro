@@ -5,4 +5,6 @@
 
   <xacro:property name="M_PI" value="3.14159265359" />
 
+  <!-- TODO: Mass values for each link -->
+
 </robot>

@@ -13,6 +13,7 @@
       <material name="grey"/>
     </visual>
 
+    <!-- TODO: Collision with simple geometry -->
     <collision>
       <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}"/>
       <geometry>
@@ -20,6 +21,7 @@
       </geometry>
     </collision>
 
+    <!-- TODO: Inertial with simple geometry -->
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}"/>
       <mass value="0.2" />
